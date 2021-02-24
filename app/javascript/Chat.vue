@@ -12,7 +12,7 @@
                 <p>[回答する]をクリックしてアンケートへのご協力をお願いいたします。</p>
 
               <template #modal-footer>
-                <router-link :to="{ name: 'QuestionnairePage' }">
+                <router-link :to="{ name: 'QuestionnaireNewPage' }">
                   <b-button variant="primary">
                     回答する
                   </b-button>

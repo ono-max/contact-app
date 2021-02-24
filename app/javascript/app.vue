@@ -9,7 +9,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 import ChatPage from 'Chat.vue'
-import QuestionnairePage from 'Questionnaire.vue'
+import QuestionnaireNewPage from 'QuestionnaireNew.vue'
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 
 // Import Bootstrap an BootstrapVue CSS files (order is important)
@@ -26,9 +26,9 @@ const router = new VueRouter({
   routes: [
     { path: '/',
       component: ChatPage  },
-    { path: '/sample',
-      name: 'QuestionnairePage',
-      component: QuestionnairePage }
+    { path: '/questionnaires/new',
+      name: 'QuestionnaireNewPage',
+      component: QuestionnaireNewPage }
   ]
 
 })

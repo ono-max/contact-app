@@ -4,7 +4,11 @@
       <img class="img" src="./images/EnqueteLogo.png" /><br>
     </span>
     <form id="j_id0:j_id8" name="j_id0:j_id8" @submit.prevent="$emit('submit')">
-      <input type="hidden" name="j_id0:j_id8" value="j_id0:j_id8">
+      <div v-if="errors.length != 0">
+        <ul v-for="e in errors" :key="e">
+          <li><font color="red">{{ e }}</font></li>
+        </ul>
+      </div>
       <span id="j_id0:j_id8:j_id9" style="font-size:20px; font-weight:700">
         <span id="j_id0:j_id8:j_id10">お客様アンケート</span><br>
       </span>
@@ -18,9 +22,6 @@
       <span id="j_id0:j_id8:j_id17">
         <span id="j_id0:j_id8:j_id18">
           ※所要時間5～10分程度<br>
-          ※弊社からの回答が届いていない場合は、お手数ですが「Q9．その他ご意見・ご要望」にその旨をご記載ください。
-          確認のうえ、改めてメールまたは電話にてご連絡いたします。
-          なお、その際他の質問にはご回答いただかなくとも問題ございません。
         </span><br><br>
       </span>
       <hr width="100%">
@@ -45,13 +46,13 @@
                   <tbody>
                     <tr>
                       <td>
-                        <input type="radio" name="j_id0:j_id8:j_id39:0:j_id49" id="j_id0:j_id8:j_id39:0:j_id49:0" value="01.はい">
+                        <input v-model="questionnaire.q1" type="radio" name="j_id0:j_id8:j_id39:0:j_id49" id="j_id0:j_id8:j_id39:0:j_id49:0" value="yes">
                         <label for="j_id0:j_id8:j_id39:0:j_id49:0"> 01.はい</label>
                       </td>
                     </tr>
                     <tr>
                       <td>
-                        <input type="radio" name="j_id0:j_id8:j_id39:0:j_id49" id="j_id0:j_id8:j_id39:0:j_id49:1" value="02.いいえ">
+                        <input v-model="questionnaire.q1" type="radio" name="j_id0:j_id8:j_id39:0:j_id49" id="j_id0:j_id8:j_id39:0:j_id49:1" value="no">
                         <label for="j_id0:j_id8:j_id39:0:j_id49:1"> 02.いいえ</label>
                       </td>
                     </tr>
@@ -82,37 +83,37 @@
                   <tbody>
                     <tr>
                       <td>
-                        <input type="radio" name="j_id0:j_id8:j_id39:1:j_id49" id="j_id0:j_id8:j_id39:1:j_id49:0" value="01.PayPayモールから">
-                          <label for="1j_id0:j_id8:j_id39:1:j_id49:0"> 01.PayPayモールから</label>
+                        <input v-model="questionnaire.q2" type="radio" name="j_id0:j_id8:j_id39:1:j_id49" id="j_id0:j_id8:j_id39:1:j_id49:0" value="paypay_mall">
+                          <label for="j_id0:j_id8:j_id39:1:j_id49:0"> 01.PayPayモールから</label>
                       </td>
                     </tr>
                     <tr>
                       <td>
-                        <input type="radio" name="j_id0:j_id8:j_id39:1:j_id49" id="j_id0:j_id8:j_id39:1:j_id49:1" value="02.ZOZOTOWN内のヘルプページから">
-                          <label for="j_id0:j_id8:j_id39:1:j_id49:1"> 01.PayPayモールから</label>
+                        <input v-model="questionnaire.q2" type="radio" name="j_id0:j_id8:j_id39:1:j_id49" id="j_id0:j_id8:j_id39:1:j_id49:1" value="help_page_in_zozotown">
+                          <label for="j_id0:j_id8:j_id39:1:j_id49:1"> 02.ZOZOTOWN内のヘルプページから</label>
                       </td>
                     </tr>
                     <tr>
                       <td>
-                        <input type="radio" name="j_id0:j_id8:j_id39:1:j_id49" id="j_id0:j_id8:j_id39:1:j_id49:2" value="03.ZOZOTOWN内の注文履歴から">
+                        <input v-model="questionnaire.q2" type="radio" name="j_id0:j_id8:j_id39:1:j_id49" id="j_id0:j_id8:j_id39:1:j_id49:2" value="order_history_in_zozotown">
                           <label for="j_id0:j_id8:j_id39:1:j_id49:2"> 03.ZOZOTOWN内の注文履歴から</label>
                       </td>
                     </tr>
                     <tr>
                       <td>
-                        <input type="radio" name="j_id0:j_id8:j_id39:1:j_id49" id="j_id0:j_id8:j_id39:1:j_id49:3" value="04.納品書を見て">
+                        <input v-model="questionnaire.q2" type="radio" name="j_id0:j_id8:j_id39:1:j_id49" id="j_id0:j_id8:j_id39:1:j_id49:3" value="delivery_slip">
                           <label for="j_id0:j_id8:j_id39:1:j_id49:3"> 04.納品書を見て</label>
                       </td>
                     </tr>
                     <tr>
                       <td>
-                        <input type="radio" name="j_id0:j_id8:j_id39:1:j_id49" id="j_id0:j_id8:j_id39:1:j_id49:4" value="05.ZOZOTOWNからのメールにあるリンクから">
+                        <input v-model="questionnaire.q2" type="radio" name="j_id0:j_id8:j_id39:1:j_id49" id="j_id0:j_id8:j_id39:1:j_id49:4" value="link_on_mail_from_zozotown">
                           <label for="j_id0:j_id8:j_id39:1:j_id49:4"> 05.ZOZOTOWNからのメールにあるリンクから</label>
                       </td>
                     </tr>
                     <tr>
                       <td>
-                        <input type="radio" name="j_id0:j_id8:j_id39:1:j_id49" id="j_id0:j_id8:j_id39:1:j_id49:5" value="06.その他">
+                        <input v-model="questionnaire.q2" type="radio" name="j_id0:j_id8:j_id39:1:j_id49" id="j_id0:j_id8:j_id39:1:j_id49:5" value="other">
                         <label for="j_id0:j_id8:j_id39:1:j_id49:5"> 06.その他</label>
                       </td>
                     </tr>
@@ -132,7 +133,7 @@
           </tr>
           <tr>
             <td>
-              <textarea name="j_id0:j_id8:j_id39:1:j_id76" style="width:100%"></textarea>
+              <textarea v-model="questionnaire.q2_other" name="j_id0:j_id8:j_id39:1:j_id76" style="width:100%"></textarea>
             </td>
           </tr>
           <tr>
@@ -157,31 +158,31 @@
                   <tbody>
                     <tr>
                       <td>
-                        <input type="radio" name="j_id0:j_id8:j_id39:2:j_id49" id="j_id0:j_id8:j_id39:2:j_id49:0" value="01.満足">
+                        <input v-model="questionnaire.q3" type="radio" name="j_id0:j_id8:j_id39:2:j_id49" id="j_id0:j_id8:j_id39:2:j_id49:0" value="very_satisfied">
                         <label for="j_id0:j_id8:j_id39:2:j_id49:0"> 01.満足</label>
                       </td>
                     </tr>
                     <tr>
                       <td>
-                        <input type="radio" name="j_id0:j_id8:j_id39:2:j_id49" id="j_id0:j_id8:j_id39:2:j_id49:1" value="02.やや満足">
+                        <input v-model="questionnaire.q3" type="radio" name="j_id0:j_id8:j_id39:2:j_id49" id="j_id0:j_id8:j_id39:2:j_id49:1" value="satisfied">
                         <label for="j_id0:j_id8:j_id39:2:j_id49:1"> 02.やや満足</label>
                       </td>
                     </tr>
                     <tr>
                       <td>
-                        <input type="radio" name="j_id0:j_id8:j_id39:2:j_id49" id="j_id0:j_id8:j_id39:2:j_id49:2" value="03.ふつう">
+                        <input v-model="questionnaire.q3" type="radio" name="j_id0:j_id8:j_id39:2:j_id49" id="j_id0:j_id8:j_id39:2:j_id49:2" value="neither">
                         <label for="j_id0:j_id8:j_id39:2:j_id49:2"> 03.ふつう</label>
                       </td>
                     </tr>
                     <tr>
                       <td>
-                        <input type="radio" name="j_id0:j_id8:j_id39:2:j_id49" id="j_id0:j_id8:j_id39:2:j_id49:3" value="04.やや不満">
+                        <input v-model="questionnaire.q3" type="radio" name="j_id0:j_id8:j_id39:2:j_id49" id="j_id0:j_id8:j_id39:2:j_id49:3" value="unsatisfied">
                         <label for="j_id0:j_id8:j_id39:2:j_id49:3"> 04.やや不満</label>
                       </td>
                     </tr>
                     <tr>
                       <td>
-                        <input type="radio" name="j_id0:j_id8:j_id39:2:j_id49" id="j_id0:j_id8:j_id39:2:j_id49:4" value="05.不満">
+                        <input v-model="questionnaire.q3" type="radio" name="j_id0:j_id8:j_id39:2:j_id49" id="j_id0:j_id8:j_id39:2:j_id49:4" value="very_unsatisfied">
                         <label for="j_id0:j_id8:j_id39:2:j_id49:4"> 05.不満</label>
                       </td>
                     </tr>
@@ -210,31 +211,31 @@
                   <tbody>
                     <tr>
                       <td>
-                        <input type="radio" name="j_id0:j_id8:j_id39:3:j_id49" id="j_id0:j_id8:j_id39:3:j_id49:0" value="01.そう思う">
+                        <input v-model="questionnaire.q4" type="radio" name="j_id0:j_id8:j_id39:3:j_id49" id="j_id0:j_id8:j_id39:3:j_id49:0" value="strongly_agree">
                         <label for="j_id0:j_id8:j_id39:3:j_id49:0"> 01.そう思う</label>
                       </td>
                     </tr>
                     <tr>
                       <td>
-                        <input type="radio" name="j_id0:j_id8:j_id39:3:j_id49" id="j_id0:j_id8:j_id39:3:j_id49:1" value="02.どちらかといえばそう思う">
+                        <input v-model="questionnaire.q4" type="radio" name="j_id0:j_id8:j_id39:3:j_id49" id="j_id0:j_id8:j_id39:3:j_id49:1" value="agree">
                         <label for="j_id0:j_id8:j_id39:3:j_id49:1"> 02.どちらかといえばそう思う</label>
                       </td>
                     </tr>
                     <tr>
                       <td>
-                        <input type="radio" name="j_id0:j_id8:j_id39:3:j_id49" id="j_id0:j_id8:j_id39:3:j_id49:2" value="03.どちらでもない">
+                        <input v-model="questionnaire.q4" type="radio" name="j_id0:j_id8:j_id39:3:j_id49" id="j_id0:j_id8:j_id39:3:j_id49:2" value="neutral">
                         <label for="j_id0:j_id8:j_id39:3:j_id49:2"> 03.どちらでもない</label>
                       </td>
                     </tr>
                     <tr>
                       <td>
-                        <input type="radio" name="j_id0:j_id8:j_id39:3:j_id49" id="j_id0:j_id8:j_id39:3:j_id49:3" value="04.あまりそう思わない">
+                        <input v-model="questionnaire.q4" type="radio" name="j_id0:j_id8:j_id39:3:j_id49" id="j_id0:j_id8:j_id39:3:j_id49:3" value="disagree">
                         <label for="j_id0:j_id8:j_id39:3:j_id49:3"> 04.あまりそう思わない</label>
                       </td>
                     </tr>
                     <tr>
                       <td>
-                        <input type="radio" name="j_id0:j_id8:j_id39:3:j_id49" id="j_id0:j_id8:j_id39:3:j_id49:4" value="05.そう思わない">
+                        <input v-model="questionnaire.q4" type="radio" name="j_id0:j_id8:j_id39:3:j_id49" id="j_id0:j_id8:j_id39:3:j_id49:4" value="strongly_disagree">
                         <label for="j_id0:j_id8:j_id39:3:j_id49:4"> 05.そう思わない</label>
                       </td>
                     </tr>
@@ -265,7 +266,7 @@
                   <tbody>
                     <tr>
                       <td>
-                        <input type="radio" name="j_id0:j_id8:j_id39:4:j_id49" id="j_id0:j_id8:j_id39:4:j_id49:0" value="01.そう思う">
+                        <input v-model="questionnaire.q5" type="radio" name="j_id0:j_id8:j_id39:4:j_id49" id="j_id0:j_id8:j_id39:4:j_id49:0" value="strongly_agree">
                         <label for="j_id0:j_id8:j_id39:4:j_id49:0">
                           01.そう思う
                         </label>
@@ -273,7 +274,7 @@
                     </tr>
                     <tr>
                       <td>
-                        <input type="radio" name="j_id0:j_id8:j_id39:4:j_id49" id="j_id0:j_id8:j_id39:4:j_id49:1" value="02.どちらかといえばそう思う">
+                        <input v-model="questionnaire.q5" type="radio" name="j_id0:j_id8:j_id39:4:j_id49" id="j_id0:j_id8:j_id39:4:j_id49:1" value="agree">
                         <label for="j_id0:j_id8:j_id39:4:j_id49:1">
                           02.どちらかといえばそう思う
                         </label>
@@ -281,19 +282,19 @@
                     </tr>
                     <tr>
                       <td>
-                        <input type="radio" name="j_id0:j_id8:j_id39:4:j_id49" id="j_id0:j_id8:j_id39:4:j_id49:2" value="03.どちらでもない">
+                        <input v-model="questionnaire.q5" type="radio" name="j_id0:j_id8:j_id39:4:j_id49" id="j_id0:j_id8:j_id39:4:j_id49:2" value="neutral">
                         <label for="j_id0:j_id8:j_id39:4:j_id49:2"> 03.どちらでもない</label>
                       </td>
                     </tr>
                     <tr>
                       <td>
-                        <input type="radio" name="j_id0:j_id8:j_id39:4:j_id49" id="j_id0:j_id8:j_id39:4:j_id49:3" value="04.あまりそう思わない">
+                        <input v-model="questionnaire.q5" type="radio" name="j_id0:j_id8:j_id39:4:j_id49" id="j_id0:j_id8:j_id39:4:j_id49:3" value="disagree">
                         <label for="j_id0:j_id8:j_id39:4:j_id49:3"> 04.あまりそう思わない</label>
                       </td>
                     </tr>
                     <tr>
                       <td>
-                        <input type="radio" name="j_id0:j_id8:j_id39:4:j_id49" id="j_id0:j_id8:j_id39:4:j_id49:4" value="05.そう思わない">
+                        <input v-model="questionnaire.q5" type="radio" name="j_id0:j_id8:j_id39:4:j_id49" id="j_id0:j_id8:j_id39:4:j_id49:4" value="strongly_disagree">
                         <label for="j_id0:j_id8:j_id39:4:j_id49:4">
                           05.そう思わない
                         </label>
@@ -326,30 +327,30 @@
                   <tbody>
                     <tr>
                       <td>
-                        <input type="radio" name="j_id0:j_id8:j_id39:5:j_id49" id="j_id0:j_id8:j_id39:5:j_id49:0" value="01.そう思う">
+                        <input v-model="questionnaire.q6" type="radio" name="j_id0:j_id8:j_id39:5:j_id49" id="j_id0:j_id8:j_id39:5:j_id49:0" value="strongly_agree">
                         <label for="j_id0:j_id8:j_id39:5:j_id49:0"> 01.そう思う</label>
                       </td>
                     </tr>
                     <tr>
                       <td>
-                        <input type="radio" name="j_id0:j_id8:j_id39:5:j_id49" id="j_id0:j_id8:j_id39:5:j_id49:1" value="02.どちらかといえばそう思う">
+                        <input v-model="questionnaire.q6" type="radio" name="j_id0:j_id8:j_id39:5:j_id49" id="j_id0:j_id8:j_id39:5:j_id49:1" value="agree">
                         <label for="j_id0:j_id8:j_id39:5:j_id49:1"> 02.どちらかといえばそう思う</label>
                       </td>
                     </tr>
                     <tr>
                       <td>
-                        <input type="radio" name="j_id0:j_id8:j_id39:5:j_id49" id="j_id0:j_id8:j_id39:5:j_id49:2" value="03.どちらでもない">
+                        <input v-model="questionnaire.q6" type="radio" name="j_id0:j_id8:j_id39:5:j_id49" id="j_id0:j_id8:j_id39:5:j_id49:2" value="neutral">
                         <label for="j_id0:j_id8:j_id39:5:j_id49:2"> 03.どちらでもない</label></td>
                     </tr>
                     <tr>
                       <td>
-                        <input type="radio" name="j_id0:j_id8:j_id39:5:j_id49" id="j_id0:j_id8:j_id39:5:j_id49:3" value="04.あまりそう思わない">
+                        <input v-model="questionnaire.q6" type="radio" name="j_id0:j_id8:j_id39:5:j_id49" id="j_id0:j_id8:j_id39:5:j_id49:3" value="disagree">
                         <label for="j_id0:j_id8:j_id39:5:j_id49:3"> 04.あまりそう思わない</label>
                       </td>
                     </tr>
                     <tr>
                       <td>
-                        <input type="radio" name="j_id0:j_id8:j_id39:5:j_id49" id="j_id0:j_id8:j_id39:5:j_id49:4" value="05.そう思わない">
+                        <input v-model="questionnaire.q6" type="radio" name="j_id0:j_id8:j_id39:5:j_id49" id="j_id0:j_id8:j_id39:5:j_id49:4" value="strongly_disagree">
                         <label for="j_id0:j_id8:j_id39:5:j_id49:4"> 05.そう思わない</label>
                       </td>
                     </tr>
@@ -378,31 +379,31 @@
                   <tbody>
                     <tr>
                       <td>
-                        <input type="radio" name="j_id0:j_id8:j_id39:6:j_id49" id="j_id0:j_id8:j_id39:6:j_id49:0" value="01.そう思う">
+                        <input v-model="questionnaire.q7" type="radio" name="j_id0:j_id8:j_id39:6:j_id49" id="j_id0:j_id8:j_id39:6:j_id49:0" value="strongly_agree">
                         <label for="j_id0:j_id8:j_id39:6:j_id49:0"> 01.そう思う</label>
                       </td>
                     </tr>
                     <tr>
                       <td>
-                        <input type="radio" name="j_id0:j_id8:j_id39:6:j_id49" id="j_id0:j_id8:j_id39:6:j_id49:1" value="02.どちらかといえばそう思う">
+                        <input v-model="questionnaire.q7" type="radio" name="j_id0:j_id8:j_id39:6:j_id49" id="j_id0:j_id8:j_id39:6:j_id49:1" value="agree">
                         <label for="j_id0:j_id8:j_id39:6:j_id49:1"> 02.どちらかといえばそう思う</label>
                       </td>
                     </tr>
                     <tr>
                       <td>
-                        <input type="radio" name="j_id0:j_id8:j_id39:6:j_id49" id="j_id0:j_id8:j_id39:6:j_id49:2" value="03.どちらでもない">
+                        <input v-model="questionnaire.q7" type="radio" name="j_id0:j_id8:j_id39:6:j_id49" id="j_id0:j_id8:j_id39:6:j_id49:2" value="neutral">
                         <label for="j_id0:j_id8:j_id39:6:j_id49:2"> 03.どちらでもない</label>
                       </td>
                     </tr>
                     <tr>
                       <td>
-                        <input type="radio" name="j_id0:j_id8:j_id39:6:j_id49" id="j_id0:j_id8:j_id39:6:j_id49:3" value="04.あまりそう思わない">
+                        <input v-model="questionnaire.q7" type="radio" name="j_id0:j_id8:j_id39:6:j_id49" id="j_id0:j_id8:j_id39:6:j_id49:3" value="disagree">
                         <label for="j_id0:j_id8:j_id39:6:j_id49:3"> 04.あまりそう思わない</label>
                       </td>
                     </tr>
                     <tr>
                       <td>
-                        <input type="radio" name="j_id0:j_id8:j_id39:6:j_id49" id="j_id0:j_id8:j_id39:6:j_id49:4" value="05.そう思わない">
+                        <input v-model="questionnaire.q7" type="radio" name="j_id0:j_id8:j_id39:6:j_id49" id="j_id0:j_id8:j_id39:6:j_id49:4" value="strongly_diagree">
                         <label for="j_id0:j_id8:j_id39:6:j_id49:4"> 05.そう思わない</label>
                       </td>
                     </tr>
@@ -421,7 +422,7 @@
           </tr>
           <tr>
             <td>
-              <textarea name="j_id0:j_id8:j_id39:6:j_id76" style="width:100%"></textarea>
+              <textarea v-model="questionnaire.q7_other" name="j_id0:j_id8:j_id39:6:j_id76" style="width:100%"></textarea>
             </td>
           </tr>
           <tr>
@@ -441,7 +442,7 @@
           </tr>
           <tr>
             <td>
-              <select name="j_id0:j_id8:j_id39:7:j_id54" size="1" style="width:100%">
+              <select v-model="questionnaire.q8" name="j_id0:j_id8:j_id39:7:j_id54" size="1" style="width:100%">
                 <option value="">--なし--</option>
                 <option value="10">10</option>
                 <option value="9">9</option>
@@ -473,7 +474,7 @@
           </tr>
           <tr>
             <td>
-              <textarea name="j_id0:j_id8:j_id39:8:j_id63" style="width:100%"></textarea>
+              <textarea v-model="questionnaire.q9" name="j_id0:j_id8:j_id39:8:j_id63" style="width:100%"></textarea>
             </td>
           </tr>
           <tr>
@@ -491,6 +492,14 @@
   </div>
 </template>
 
+<script>
+export default {
+  props: {
+    questionnaire: {},
+    errors: {}
+  }
+}
+</script>
 
 <style scoped>
   .main {
