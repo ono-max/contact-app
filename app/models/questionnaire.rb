@@ -7,17 +7,17 @@ class Questionnaire < ApplicationRecord
   enum q1: TWO_CHOICES
   enum q2: PLACES
   enum q3: SATISFACTION_LEVELS
-  enum q4: OPINIONS
-  enum q5: OPINIONS
-  enum q6: OPINIONS
-  enum q7: OPINIONS
+  enum q4: OPINIONS, _prefix: true
+  enum q5: OPINIONS, _prefix: true
+  enum q6: OPINIONS, _prefix: true
+  enum q7: OPINIONS, _prefix: true
   enum q8: NUMBERS
   validates :q1, inclusion: { in: TWO_CHOICES.keys.concat(TWO_CHOICES.keys.map(&:to_s)) }
   validates :q2, inclusion: { in: PLACES.keys.concat(PLACES.keys.map(&:to_s)) }
   validates :q3, inclusion: { in: SATISFACTION_LEVELS.keys.concat(SATISFACTION_LEVELS.keys.map(&:to_s))}
-  validates :q4, inclusion: { in: OPINIONS.keys.concat(OPINIONS.keys.map(&:to_s))}
-  validates :q5, inclusion: { in: OPINIONS.keys.concat(OPINIONS.keys.map(&:to_s))}
-  validates :q6, inclusion: { in: OPINIONS.keys.concat(OPINIONS.keys.map(&:to_s))}
-  validates :q7, inclusion: { in: OPINIONS.keys.concat(OPINIONS.keys.map(&:to_s))}
-  validates :q8, inclusion: 0..10
+  validates :q4, inclusion: { in: OPINIONS.keys.concat(OPINIONS.keys.map(&:to_s)) }
+  validates :q5, inclusion: { in: OPINIONS.keys.concat(OPINIONS.keys.map(&:to_s)) }
+  validates :q6, inclusion: { in: OPINIONS.keys.concat(OPINIONS.keys.map(&:to_s)) }
+  validates :q7, inclusion: { in: OPINIONS.keys.concat(OPINIONS.keys.map(&:to_s)) }
+  validates :q8, inclusion: { in: NUMBERS.keys.concat(NUMBERS.keys.map(&:to_s)) }
 end
