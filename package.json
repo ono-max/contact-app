@@ -9,7 +9,7 @@
     "axios": "^1.4.0",
     "bootstrap": "^4.6.0",
     "bootstrap-vue": "^2.23.1",
-    "vue": "^2.6.12",
+    "vue": "^3.3.1",
     "vue-loader": "^17.1.0",
     "vue-router": "^3.6.5",
     "vue-template-compiler": "^2.6.12"
