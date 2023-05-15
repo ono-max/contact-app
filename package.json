@@ -10,7 +10,7 @@
     "bootstrap": "^4.6.0",
     "bootstrap-vue": "^2.23.1",
     "vue": "^3.3.2",
-    "vue-loader": "^17.1.0",
+    "vue-loader": "^17.1.1",
     "vue-router": "^4.2.0",
     "vue-template-compiler": "^2.7.14"
   },
