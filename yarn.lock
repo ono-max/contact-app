@@ -7206,10 +7206,10 @@ vue-functional-data-merge@^3.1.0:
   resolved "https://registry.yarnpkg.com/vue-functional-data-merge/-/vue-functional-data-merge-3.1.0.tgz#08a7797583b7f35680587f8a1d51d729aa1dc657"
   integrity sha512-leT4kdJVQyeZNY1kmnS1xiUlQ9z1B/kdBFCILIjYYQDqZgLqCLa0UhjSSeRX6c3mUe6U5qYeM8LrEqkHJ1B4LA==
 
-vue-loader@^17.1.0:
-  version "17.1.0"
-  resolved "https://registry.yarnpkg.com/vue-loader/-/vue-loader-17.1.0.tgz#f48c1f4d416e905b098bc250e2e8ae1c4acc43f7"
-  integrity sha512-zAjrT+TNWTpgRODxqDfzbDyvuTf5kCP9xmMk8aspQKuYNnTY2r0XK/bHu1DKLpSpk0I6fkQph5OLKB7HcRIPZw==
+vue-loader@^17.1.1:
+  version "17.1.1"
+  resolved "https://registry.yarnpkg.com/vue-loader/-/vue-loader-17.1.1.tgz#546c85eb844f98653921c02e8b0b060ebea19bfb"
+  integrity sha512-qpqEVkKdrAsgyIBMHaiXurDeCuBWqRyKqg2GI4aG3NbggEls+BLqTZdqahbJJh7fm83sz+iz3gg6eDWdbNlG7Q==
   dependencies:
     chalk "^4.1.0"
     hash-sum "^2.0.0"
