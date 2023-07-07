@@ -11,7 +11,7 @@
     "bootstrap-vue": "^2.23.1",
     "vue": "^3.3.4",
     "vue-loader": "^17.2.2",
-    "vue-router": "^4.2.3",
+    "vue-router": "^4.2.4",
     "vue-template-compiler": "^2.7.14"
   },
   "version": "0.1.0",
